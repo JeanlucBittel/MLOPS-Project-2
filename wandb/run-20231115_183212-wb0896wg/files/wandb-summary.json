@@ -1,1 +1,0 @@
-{"learning_rate": 6.704e-06, "adam_epsilon": 1e-08, "warmup_steps": 70, "weight_decay": 0.0, "train_batch_size": 4, "eval_batch_size": 4, "_timestamp": 1700069549.6338036, "_runtime": 17.493462562561035, "_step": 20, "val/val_loss": 0.689990758895874, "val/average_val_loss": 0.6892521977424622, "train/train_loss": 0.6979662775993347, "_wandb": {"runtime": 16}}
