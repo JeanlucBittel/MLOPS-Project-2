@@ -1,13 +1,13 @@
 FROM bitnami/pytorch:latest
 
 # Add all files
-COPY main.py ./mlops/main.py
-COPY setup.py ./mlops/setup.py
-COPY ./requirements.txt ./mlops/requirements.txt
+COPY main.py .
+COPY setup.py .
+COPY requirements.txt .
 
 # Add all directories
-ADD src ./mlops/src
+ADD src .
 
-# RUN pip install -r ./mlops/requirements.txt
+RUN python3 -m pip install -r ./mlops/requirements.txt
 
-# CMD ["python3", "./mlops/main.py"]
+CMD ["python3", "main.py"]
