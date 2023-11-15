@@ -7,7 +7,3 @@ ADD requirements.txt .
 
 # Add all firectories
 ADD src .
-
-RUN pip install -r requirements.txt
-
-CMD ["python", "./main.py"]
