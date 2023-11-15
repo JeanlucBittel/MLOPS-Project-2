@@ -1,0 +1,11 @@
+adam_epsilon: 1.0e-08
+eval_batch_size: 4
+eval_splits:
+- validation
+learning_rate: 6.704e-06
+model_name_or_path: distilbert-base-uncased
+num_labels: 2
+task_name: mrpc
+train_batch_size: 4
+warmup_steps: 70
+weight_decay: 0.0

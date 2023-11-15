@@ -1,10 +1,16 @@
+import os
 import torch
+import wandb
 from pytorch_lightning import seed_everything, Trainer
 from src.data.make_dataset import GLUEDataModule
 from src.models.train_model import GLUETransformer
+from dotenv import load_dotenv
 
 def setup(batch_size, learning_rate, warmup_steps):
-    #wandb.login()
+    load_dotenv()
+    WANDB_API_KEY = os.getenv('WANDB_API_KEY')
+    
+    wandb.login()
 
     seed_everything(42)
 
@@ -33,4 +39,4 @@ def setup(batch_size, learning_rate, warmup_steps):
     )
     trainer.fit(model, datamodule=dm)
 
-    # wandb.finish()
+    wandb.finish()

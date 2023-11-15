@@ -1,5 +1,6 @@
 import datasets
 import torch
+import wandb
 from datetime import datetime
 from typing import Optional
 from pytorch_lightning import LightningModule
@@ -33,56 +34,56 @@ class GLUETransformer(LightningModule):
         self.training_step_outputs = []
         self.val_step_outputs = []
 
-        self.wandb_name = "learning_rate_1e-5"
-        self.epoch = 0
+        # self.wandb_name = "learning_rate_1e-5"
+        # self.epoch = 0
 
-        # wandb.init(
-        #     # Set the project where this run will be logged
-        #     project="MLOPS",
-        #     # We pass a run name (otherwise it’ll be randomly assigned, like sunshine-lollypop-10)
-        #     name=f"{self.wandb_name}_epoch_{self.epoch}",
-        #     reinit=True,
-        #     # Track hyperparameters and run metadata
-        #     config={
-        #         "architecture": "DistilBERT",
-        #         "dataset": "MRPC",
-        #         "learning_rate": self.hparams.learning_rate,
-        #         "adam_epsilon": self.hparams.adam_epsilon,
-        #         "warmup_steps": self.hparams.warmup_steps,
-        #         "weight_decay": self.hparams.weight_decay,
-        #         "train_batch_size": self.hparams.train_batch_size,
-        #         "eval_batch_size": self.hparams.eval_batch_size
-        #     })
+        wandb.init(
+            # Set the project where this run will be logged
+            project="MLOPS",
+            # We pass a run name (otherwise it’ll be randomly assigned, like sunshine-lollypop-10)
+            # name=f"{self.wandb_name}_epoch_{self.epoch}",
+            reinit=True,
+            # Track hyperparameters and run metadata
+            config={
+                "architecture": "DistilBERT",
+                "dataset": "MRPC",
+                "learning_rate": self.hparams.learning_rate,
+                "adam_epsilon": self.hparams.adam_epsilon,
+                "warmup_steps": self.hparams.warmup_steps,
+                "weight_decay": self.hparams.weight_decay,
+                "train_batch_size": self.hparams.train_batch_size,
+                "eval_batch_size": self.hparams.eval_batch_size
+            })
 
-        # wandb.log({
-        #     "learning_rate": self.hparams.learning_rate,
-        #     "adam_epsilon": self.hparams.adam_epsilon,
-        #     "warmup_steps": self.hparams.warmup_steps,
-        #     "weight_decay": self.hparams.weight_decay,
-        #     "train_batch_size": self.hparams.train_batch_size,
-        #     "eval_batch_size": self.hparams.eval_batch_size
-        # })
+        wandb.log({
+            "learning_rate": self.hparams.learning_rate,
+            "adam_epsilon": self.hparams.adam_epsilon,
+            "warmup_steps": self.hparams.warmup_steps,
+            "weight_decay": self.hparams.weight_decay,
+            "train_batch_size": self.hparams.train_batch_size,
+            "eval_batch_size": self.hparams.eval_batch_size
+        })
 
     def forward(self, **inputs):
         return self.model(**inputs)
 
     def training_step(self, batch, batch_idx):
-        if self.current_epoch != self.epoch:
-            self.epoch = self.current_epoch
+        # if self.current_epoch != self.epoch:
+        #     self.epoch = self.current_epoch
             # wandb.init(
             #     project="MLOPS",
             #     name=f"{self.wandb_name}_epoch_{self.epoch}",
             #     config=wandb.config
             # )
 
-            # wandb.log({
-            #     "learning_rate": self.hparams.learning_rate,
-            #     "adam_epsilon": self.hparams.adam_epsilon,
-            #     "warmup_steps": self.hparams.warmup_steps,
-            #     "weight_decay": self.hparams.weight_decay,
-            #     "train_batch_size": self.hparams.train_batch_size,
-            #     "eval_batch_size": self.hparams.eval_batch_size
-            # })
+        wandb.log({
+            "learning_rate": self.hparams.learning_rate,
+            "adam_epsilon": self.hparams.adam_epsilon,
+            "warmup_steps": self.hparams.warmup_steps,
+            "weight_decay": self.hparams.weight_decay,
+            "train_batch_size": self.hparams.train_batch_size,
+            "eval_batch_size": self.hparams.eval_batch_size
+        })
 
         outputs = self(**batch)
         loss = outputs[0]
@@ -90,7 +91,7 @@ class GLUETransformer(LightningModule):
         metrics = {
             "train/train_loss": loss
         }
-        # wandb.log(metrics)
+        wandb.log(metrics)
 
         self.training_step_outputs.append(loss)
         self.log("train/train_loss", loss)
@@ -103,7 +104,7 @@ class GLUETransformer(LightningModule):
         metrics = {
             "train/average_train_loss": loss
         }
-        # wandb.log(metrics)
+        wandb.log(metrics)
         self.log("train/train_average_loss", loss)
 
         self.training_step_outputs.clear()
@@ -122,7 +123,7 @@ class GLUETransformer(LightningModule):
         metrics = {
             "val/val_loss": val_loss
         }
-        # wandb.log(metrics)
+        wandb.log(metrics)
 
         self.val_step_outputs.append(val_loss)
         self.log("val/val_loss", val_loss)
@@ -135,7 +136,7 @@ class GLUETransformer(LightningModule):
         metrics = {
             "val/average_val_loss": loss
         }
-        # wandb.log(metrics)
+        wandb.log(metrics)
         self.log("val/val_average_loss", loss)
 
         self.val_step_outputs.clear()
@@ -162,7 +163,7 @@ class GLUETransformer(LightningModule):
         metrics = {
             "val/average_val_loss": loss
         }
-        # wandb.log(metrics)
+        wandb.log(metrics)
 
         self.log("val_loss", loss, prog_bar=True)
         self.log_dict(self.metric.compute(predictions=preds, references=labels), prog_bar=True)

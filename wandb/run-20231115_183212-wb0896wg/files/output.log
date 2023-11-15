@@ -1,0 +1,33 @@
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+D:\Programs\anaconda3\envs\MLOPS\lib\site-packages\pytorch_lightning\trainer\connectors\logger_connector\logger_connector.py:67: UserWarning: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+  warning_cache.warn(
+Map:   0%|                                                                             | 0/3668 [00:00<?, ? examples/s]D:\Programs\anaconda3\envs\MLOPS\lib\site-packages\transformers\tokenization_utils_base.py:2614: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+Map: 100%|████████████████████████████████████████████████████████████████| 3668/3668 [00:00<00:00, 9428.79 examples/s]
+Map: 100%|██████████████████████████████████████████████████████████████████| 408/408 [00:00<00:00, 9061.03 examples/s]
+Map: 100%|███████████████████████████████████████████████████████████████| 1725/1725 [00:00<00:00, 11304.61 examples/s]
+Missing logger folder: D:\Projects\MLOPS\lightning_logs
+Loading `train_dataloader` to estimate number of stepping batches.
+D:\Programs\anaconda3\envs\MLOPS\lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:224: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+  | Name  | Type                                | Params
+--------------------------------------------------------------
+0 | model | DistilBertForSequenceClassification | 67.0 M
+--------------------------------------------------------------
+67.0 M    Trainable params
+0         Non-trainable params
+67.0 M    Total params
+267.820   Total estimated model params size (MB)
+D:\Programs\anaconda3\envs\MLOPS\lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:224: PossibleUserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+D:\Programs\anaconda3\envs\MLOPS\lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:224: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+
+
+Epoch 0:   1%|▎                                                  | 6/1019 [00:04<13:43,  1.23it/s, loss=0.721, v_num=0]
+D:\Programs\anaconda3\envs\MLOPS\lib\site-packages\pytorch_lightning\trainer\call.py:48: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+
+Epoch 0:   1%|▎                                                  | 7/1019 [00:05<13:42,  1.23it/s, loss=0.716, v_num=0]
