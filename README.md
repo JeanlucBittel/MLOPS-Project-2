@@ -32,7 +32,7 @@ conda create –f environment.yml
 
 If you want to log your results with Weights & Biases, then create a `.env` file in the root directory and add the following line:
 
-```python-dotenv
+```console
 WANDB_API_KEY=$YOUR_API_KEY
 ```
 
@@ -63,8 +63,12 @@ docker run python-imagename
 ### Local
 If you want to start a run without Docker you can use the following command:
 
-`py main.py`
+```console
+py main.py
+```
 
 Or to see additional options use:
 
-`py main.py -h`
+```console
+py main.py -h
+```
