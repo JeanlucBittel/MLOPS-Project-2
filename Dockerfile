@@ -1,4 +1,4 @@
-FROM pytorch/pytorch
+FROM pytorch/pytorch:latest
 
 # Add all files
 ADD main.py ./mlops/main.py
