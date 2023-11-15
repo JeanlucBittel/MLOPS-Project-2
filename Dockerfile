@@ -1,12 +1,13 @@
-FROM pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime
+FROM bitnami/pytorch:latest
 
 # Add all files
-ADD main.py ./mlops/main.py
-ADD setup.py ./mlops/setup.py
-
+COPY main.py ./mlops/main.py
+COPY setup.py ./mlops/setup.py
 COPY ./requirements.txt ./mlops/requirements.txt
 
 # Add all directories
 ADD src ./mlops/src
 
-RUN pip install -r ./mlops/requirements.txt
+# RUN pip install -r ./mlops/requirements.txt
+
+# CMD ["python3", "./mlops/main.py"]
