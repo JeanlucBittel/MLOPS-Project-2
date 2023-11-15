@@ -7,6 +7,7 @@ This project finetunes the [DistilBERT base model](https://huggingface.co/distil
 * [Usage](#usage)
     * [Docker](#docker)
     * [Local](#local)
+* [Important Notes](#important-notes)
 
 ## Technologies
 Project is created with:
@@ -55,7 +56,7 @@ docker build -t python-imagename https://github.com/JeanlucBittel/MLOPS-Project-
 Once the image has been build you start it with:
 
 ```console
-docker run python-imagename
+docker run -it python-imagename
 ```
 
 > Note: When running the script with Docker you can't add any additional options. If you wish to use any options see the [next chapter](#locally).
@@ -72,3 +73,6 @@ Or to see additional options use:
 ```console
 py main.py -h
 ```
+
+## Important Notes
+* PyTorch 2.1 only support Python version between 3.8 and 3.11
