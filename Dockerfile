@@ -13,6 +13,6 @@ ADD src /mlops/src
 
 # Run all commands
 RUN python3 -m pip install -r /mlops/requirements.txt
-RUN mkdir -p /mlops/.cache
+RUN mkdir -p /mlops/.cache && chmod 777 /mlops/.cache
 
 CMD ["python3", "/mlops/main.py"]
