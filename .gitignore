@@ -6,5 +6,5 @@ wandb/
 lightning_logs/
 
 ### Python ###
-# __pycache__/
-# *.pyc
+__pycache__/
+*.pyc
