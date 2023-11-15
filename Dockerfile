@@ -1,9 +1,12 @@
-FROM python:3.9-alpine
+FROM pytorch/pytorch
 
 # Add all files
-ADD main.py .
-ADD setup.py .
-ADD requirements.txt .
+ADD main.py ./mlops/main.py
+ADD setup.py ./mlops/setup.py
 
-# Add all firectories
-ADD src .
+COPY ./requirements.txt ./mlops/requirements.txt
+
+# Add all directories
+ADD src ./mlops/src
+
+RUN pip install -r ./mlops/requirements.txt
