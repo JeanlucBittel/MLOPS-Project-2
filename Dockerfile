@@ -10,4 +10,6 @@ ADD src .
 
 RUN python3 -m pip install -r requirements.txt
 
+WORKDIR /
+
 CMD ["python3", "main.py"]
