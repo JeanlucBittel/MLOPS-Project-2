@@ -1,12 +1,10 @@
-# Created by https://www.toptal.com/developers/gitignore/api/dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=dotenv
-
 ### dotenv ###
 .env
+
+### wandb ###
+wandb/
+lightning_logs/
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
-
-# End of https://www.toptal.com/developers/gitignore/api/dotenv
-
