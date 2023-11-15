@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 def setup(batch_size, learning_rate, warmup_steps):
     load_dotenv()
     WANDB_API_KEY = os.getenv('WANDB_API_KEY')
+
+    os.environ['SENTENCE_TRANSFORMERS_HOME'] = './.cache'
     
     if WANDB_API_KEY:
         wandb.login()

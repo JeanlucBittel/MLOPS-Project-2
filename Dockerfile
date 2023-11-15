@@ -8,7 +8,9 @@ COPY requirements.txt /mlops/requirements.txt
 # Add all directories
 ADD src /mlops/src
 
+# Run all commands
 RUN python3 -m pip install -r /mlops/requirements.txt
+RUN mkdir /mlops/.cache
 
 WORKDIR /mlops
 
