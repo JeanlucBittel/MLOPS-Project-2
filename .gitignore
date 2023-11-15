@@ -6,5 +6,5 @@ wandb/
 lightning_logs/
 
 ### Python ###
-# Byte-compiled / optimized / DLL files
 __pycache__/
+*.pyc
