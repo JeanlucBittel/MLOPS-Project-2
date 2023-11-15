@@ -10,7 +10,8 @@ def setup(batch_size, learning_rate, warmup_steps):
     load_dotenv()
     WANDB_API_KEY = os.getenv('WANDB_API_KEY')
     
-    wandb.login()
+    if WANDB_API_KEY:
+        wandb.login()
 
     seed_everything(42)
 
@@ -39,4 +40,5 @@ def setup(batch_size, learning_rate, warmup_steps):
     )
     trainer.fit(model, datamodule=dm)
 
-    wandb.finish()
+    if WANDB_API_KEY:
+        wandb.finish()
